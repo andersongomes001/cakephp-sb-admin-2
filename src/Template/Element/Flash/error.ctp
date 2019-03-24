@@ -3,9 +3,10 @@ if (!isset($params['escape']) || $params['escape'] !== false) {
     $message = h($message);
 }
 ?>
-<div class="card mb-4 py-3 border-left-danger border-bottom-danger">
-    <div class="card-body" onclick="this.classList.add('hidden');">
-        <?= $message ?>
+
+<div class="card bg-danger text-white shadow" onclick="this.classList.add('hidden');">
+    <div class="card-body">
+        Erro
+        <div class="text-white-50 small"> <?= $message ?> </div>
     </div>
 </div>
-

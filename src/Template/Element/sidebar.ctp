@@ -20,9 +20,30 @@
 
       <!-- Divider -->
       <hr class="sidebar-divider">
-
+      <?php if(intval($user["perfil_id"]) === 1): ?>
       <!-- Heading -->
       <div class="sidebar-heading">
+        Administradores
+      </div>
+
+      <!-- Nav Cadastros -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdministradores" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Cadastros</span>
+        </a>
+        <div id="collapseAdministradores" class="collapse" aria-labelledby="headingAdministradores" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header"></h6>
+            <a class="collapse-item" href="/users">Usuarios</a>
+            <a class="collapse-item" href="/perfil">Perfil</a>
+          </div>
+        </div>
+      </li>
+      <?php endif; ?>
+
+       <!-- Heading -->
+       <div class="sidebar-heading">
         Interface
       </div>
 

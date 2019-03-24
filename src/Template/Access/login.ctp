@@ -63,7 +63,15 @@ $this->layout = false;
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                   </div>
-                  <form class="user">
+                  <?= $this->Flash->render() ?>
+                  <?= $this->Form->create("login",["class" => "user"]) ?>
+                  <?= $this->Form->input('email',['type' => "text", 'class' => "form-control form-control-user", 'placeholder' => "Enter Email Address...", 'name' => "email", "aria-describedby"=>"emailHelp"]) ?>
+                  <?= $this->Form->input('password',['type' => "password", 'class' => "form-control form-control-user", 'placeholder' => "Password"]) ?>
+                  <br>
+                  <?= $this->Form->button('Login',["type" => "submit", "class" => "btn btn-primary btn-user btn-block"]) ?>
+                  <?= $this->Form->end() ?>
+
+                  <!--form class="user">
                     <div class="form-group">
                       <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                     </div>
@@ -86,13 +94,13 @@ $this->layout = false;
                     <a href="/" class="btn btn-facebook btn-user btn-block">
                       <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                     </a>
-                  </form>
+                  </form-->
                   <hr>
                   <div class="text-center">
                     <a class="small" href="/pages/forgotpassword">Forgot Password?</a>
                   </div>
                   <div class="text-center">
-                    <a class="small" href="/pages/register">Create an Account!</a>
+                    <a class="small" href="/signin">Create an Account!</a>
                   </div>
                 </div>
               </div>

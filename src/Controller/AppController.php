@@ -28,6 +28,7 @@ use Cake\Event\Event;
 class AppController extends Controller
 {
 
+    
     /**
      * Initialization hook method.
      *
@@ -51,5 +52,43 @@ class AppController extends Controller
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html
          */
         //$this->loadComponent('Security');
+
+
+        $this->loadComponent('Auth', [
+            'authorize'=> 'Controller',//adicionado essa linha
+            'authError'    => 'Você não está autorizado a acessar este conteúdo!',
+            'authenticate' => [
+                'Form' => [
+                    'fields' => [
+                        'username' => 'email',
+                        'password' => 'password'
+                    ]
+                ]
+            ],
+            'loginAction' => [
+                'controller' => 'Users',
+                'action' => 'login'
+            ],
+            'logoutRedirect' => [
+                'controller' => 'Users',
+                'action' => 'login'
+            ],
+            'unauthorizedRedirect' => $this->referer()
+        ]);
+
+        //$this->Auth->allow(['display']);
+    }
+
+    public function beforeFilter(Event $event) {
+        if($this->Auth->user()){
+            $this->set("user", $this->Auth->user());
+        }else{
+            return $this->redirect("/");
+        }
+    }
+
+    public function isAuthorized($user)
+    {
+        return false;
     }
 }

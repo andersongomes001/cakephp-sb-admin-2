@@ -23,6 +23,12 @@ use Cake\Event\Event;
  */
 class ErrorController extends AppController
 {
+    public function isAuthorized($user)
+    {
+
+        return true;
+    }
+
     /**
      * Initialization hook method.
      *
